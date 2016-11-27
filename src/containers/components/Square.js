@@ -2,12 +2,11 @@ import React from 'react'
 
 class Square extends React.Component {
   render() {
-    const { isHighlighted, mark, onClick } = this.props
+    const { r, c, isHighlighted, mark, markAt, initialize } = this.props
     return (
       <button
         className={'square' + (isHighlighted ? ' highlighted' : '')}
-        onClick={onClick}
-        >
+        onClick={() => {(mark) ? initialize() : markAt(r, c)}}>
         {mark}
       </button>
     );

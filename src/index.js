@@ -1,13 +1,20 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import Game from './Game';
+import React from 'react'
+import ReactDOM from 'react-dom'
+import { createStore } from 'redux'
+import { Provider } from 'react-redux'
+import rootReducer from './reducers'
+// import Game from './containers/Game'
+import Square from './containers/Square'
 import './index.css';
 
-ReactDOM.render(
-  <Game />,
-  document.getElementById('container')
-);
+let store = createStore(rootReducer)
 
+ReactDOM.render(
+  <Provider store={store}>
+    <Square r={0} c={0}/>
+  </Provider>,
+  document.getElementById('root')
+)
 
 
 // TODO: use redux
