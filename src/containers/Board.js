@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import { initialize, mark, highlight } from './actions'
-import ReactSquare from './components/Square'
+import ReactBoard from './components/Board'
 
 const mapStateToProps = ({ square }, ownProps) => {
   const { mark, highlights } = square
@@ -19,8 +19,9 @@ const mapStateToProps = ({ square }, ownProps) => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    putMark: (r, c) => {
-      dispatch(putMark({r, c}))
+    markAt: (r, c) => {
+      dispatch(mark({r, c}))
+      dispatch(highlight([{r, c}]))
     },
     initialize: () => {
       dispatch(initialize())
@@ -31,6 +32,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
 const Square = connect(
   mapStateToProps,
   mapDispatchToProps,
-)(ReactSquare)
+)(ReactBoard)
 
 export default Square
